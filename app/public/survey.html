@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Jonathon Nagatani | homework eleven</title>
+	<link rel="stylesheet" type="text/css" href="../css/stylehw11.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div id = 'survey'>
+		<h1 id = 'title' style = 'padding: 20px 0;'>Survey Questions</h1>
+		<hr width="100%">
+		<form action="">
+			<h2 class = 'banana'>About You</h2>
+				<h3>name (please provide)</h3>
+					<input class='primin' id = 'user-name' type="text" name="name" value="">
+				<br>
+				<h3>link to a photo image (please provide)</h3>
+					<input class = 'primin' id = 'user-photo' type="text" name="image-link" value="">
+			<h2 class = 'banana'>Question 1</h2>
+				<h3>question one content here.</h3>
+					<input type="radio" name="q1" value="1" >1
+					<input type="radio" name="q1" value="2"> 2
+					<input type="radio" name="q1" value="3"> 3
+					<input type="radio" name="q1" value="4"> 4
+					<input type="radio" name="q1" value="5"> 5<br><br>
+			<h2 class = 'banana'>Question 2</h2>
+				<h3>question two content here.</h3>
+					<input type="radio" name="q2" value="1" >1
+					<input type="radio" name="q2" value="2"> 2
+					<input type="radio" name="q2" value="3"> 3
+					<input type="radio" name="q2" value="4"> 4
+					<input type="radio" name="q2" value="5"> 5<br><br>
+			<h2 class = 'banana'>Question 3</h2>
+				<h3>question three content here.</h3>
+					<input type="radio" name="q3" value="1" >1
+					<input type="radio" name="q3" value="2"> 2
+					<input type="radio" name="q3" value="3"> 3
+					<input type="radio" name="q3" value="4"> 4
+					<input type="radio" name="q3" value="5"> 5<br>
+				<br>
+			<input id = 'submitFriend' type="submit">
+		</form>
+		<hr width="100%">
+	</div>
+	<div id = 'bottom-links'>
+		<a class = 'blink' href = '#'>API Friends List
+		</a>
+		<a class = 'blink' href = '#'>GitHub Repository
+		</a>
+	</div>
+<script type="text/javascript">
+	document.getElementById('submitFriend').addEventListener('click', function(event){
+		event.preventDefault();
+		var newFriend = new Person();
+		newFriend.name = document.getElementById('user-name').value;
+		newFriend.photo = document.getElementById('user-photo').value;
+		newFriend.scores = [];
+
+		document.getElementById('user-name').value = '';
+		document.getElementById('user-photo').value = '';
+
+		//this defines the URL of the (post) request. The information being posted to the server here is newFriend
+		document.post('/survey', newFriend).done(function(date){
+			console.log(data);
+		});
+	});
+</script>
+	
+</body>
+</html>
