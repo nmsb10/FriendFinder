@@ -1,40 +1,42 @@
-//A GET route with the url /api/friends. This will be used to display a JSON of all possible friends.
-app.get("/api/friends", function(req, res) {
-  var friends = req.people;
-  res.json(friends);
-});
+//LOAD DATA
+//link our routes to the data source(s)
+//here, that is friends.js
+var friends = require('../data/friends.js');
 
-var people = [];
-var Person = function(name, photoLink, scores){
-	this.name = name;
-	this.photo = photoLink;
-	this.scores = [];
+//ROUTING
+module.exports = function(app){
+  //A GET route with the url /api/friends. This will be used to display a JSON of all possible friends.
+  app.get("/api/friends", function(req, res) {
+    res.json(friends);
+  });
+
+  //API POST requests
+  //A POST routes /api/friends. This will be used to handle incoming survey results.
+  //When a user submits the form (thus submitting data to the server)
+  //The JSON is pushed to the friends array.
+
+  // get friends - takes in JSON input
+  //So, the user completes the survey. This data is sent to the server.
+  //Then the server posts this data to the friends array
+  app.post("/api/friends", function(request, response) {
+    var newfriend = request.body;
+    console.log('new friend: ', newfriend);
+    friends.push(newfriend);
+    //could also instead write friends.push(request.body);
+    //response.json(newfriend);
+    response.json(true);
+    //response.end();
+  });
+
+  app.post("/survey", function(request, response) {
+    var newfriend = request.body;
+    console.log('new friend: ', newfriend);
+    friends.push(newfriend);
+    //could also instead write friends.push(request.body);
+    //response.json(newfriend);
+    response.json(true);
+    //response.end();
+  });
+
+
 };
-
-// var Scores = function(a, b, c, d, e, f, g, h, i, j){
-// 	this.q1 = a;
-// 	this.q2 = b;
-// 	this.q3 = c;
-// 	this.q4 = d;
-// 	this.q5 = e;
-// 	this.q6 = f;
-// 	this.q7 = g;
-// 	this.q8 = h;
-// 	this.q9 = i;
-// 	this.q10 = j;
-// };
-
-
-//A POST routes /api/friends. This will be used to handle incoming survey results. This route will also be used to
-//handle the compatibility logic.
-
-// get friends - takes in JSON input
-//this is the server side. So now the server is taking the person object data from ???.html
-//this post request is describing what to do with the post request from ???.html
-app.post("/api/friends", function(request, response) {
-  var newfriend = request.body;
-  console.log('new friend: ', newfriend);
-  people.push(newfriend);
-  response.json(newfriend);
-  response.end();
-});
