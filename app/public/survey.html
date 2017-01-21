@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Jonathon Nagatani | homework eleven</title>
 	<!-- <link rel="stylesheet" type="text/css" href="./app/public/css/stylehw11.css"> -->
-	<link rel="stylesheet" type="text/css" href="./css/stylehw11.css">
+	<link rel="stylesheet" type="text/css" href="/css/stylehw11.css">
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -21,11 +21,11 @@
 					<input class = 'primin' id = 'user-photo' type="text" name="image-link" value="">
 			<h2 class = 'topic'>Question 1</h2>
 				<h3>question one content here.</h3>
-					<input class = 'rb' type="radio" name="q1" value="1" >1
-					<input class = 'rb' type="radio" name="q1" value="2"> 2
-					<input class = 'rb' type="radio" name="q1" value="3"> 3
-					<input class = 'rb' type="radio" name="q1" value="4"> 4
-					<input class = 'rb' type="radio" name="q1" value="5"> 5<br><br>
+					<input class = 'rb' type="radio" name="q1" value=1 >1
+					<input class = 'rb' type="radio" name="q1" value=2> 2
+					<input class = 'rb' type="radio" name="q1" value=3> 3
+					<input class = 'rb' type="radio" name="q1" value=4> 4
+					<input class = 'rb' type="radio" name="q1" value=5> 5<br><br>
 			<h2 class = 'topic'>Question 2</h2>
 				<h3>question two content here.</h3>
 					<input class = 'rb' type="radio" name="q2" value="1" >1
@@ -103,10 +103,10 @@
 
 		//substitute for $ in regular javascript here??
 		$.post(currentURL + '/survey', newFriend, function(data){
-			//clear the form fields etc
+			//clear the form fields and uncheck radio buttons
 			document.getElementById('user-name').value = '';
 			document.getElementById('user-photo').value = '';
-			document.getElementsByClassName('rb').checked = false;
+			ocument.getElementsByClassName('rb').checked = false;
 		});
 
 		//http://www.w3schools.com/howto/howto_css_modals.asp
